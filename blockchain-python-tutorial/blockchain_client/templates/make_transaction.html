@@ -90,9 +90,20 @@
         </div>
 
         <br>
+
+
+      <div class="row">
+          <label class="col-sm-2">Buyer's Pincode:</label>
+          <div class="col-sm-10">
+            <input type="text" name="sender_address" id="pincode" rows="2" class="form-control">
+
+          </div>
+        </div>
+
+        <br>
         
         <div class="row">
-          <label class="col-sm-2">Amount to Send:</label>
+          <label class="col-sm-2">ITEM (ex:Item_NameGrade1-Grade2)</label>
           <div class="col-sm-10">
             <input type="text" name="amount" id="amount" rows="2" class="form-control">
           </div>
@@ -128,7 +139,7 @@
             <form id="confirmation_transaction_form">
 
                 <div class="row">
-                  <label class="col-sm-12">Sender Address:</label>
+                  <label class="col-sm-12">Sender's Address:</label>
                   <div class="col-sm-12">
                     <input type="text" name="sender_address" id="confirmation_sender_address" rows="2" class="form-control" readonly>
 
@@ -136,14 +147,21 @@
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-12">Recipient Address:</label>
+                  <label class="col-sm-12">Buyer's Address:</label>
                   <div class="col-sm-12">
                     <input type="text" name="recipient_address" id="confirmation_recipient_address" rows="2" class="form-control" readonly>
                   </div>
                 </div>
+
+              <div class="row">
+                  <label class="col-sm-12">Pincode:</label>
+                  <div class="col-sm-12">
+                    <input type="text" name="recipient_address" id="confirmation_Pincode" rows="2" class="form-control" readonly>
+                  </div>
+                </div>
                 
                 <div class="row">
-                  <label class="col-sm-12">Amount to Send:</label>
+                  <label class="col-sm-12">Item Details:</label>
                   <div class="col-sm-12">
                     <input type="text" name="amount" id="confirmation_amount" rows="2" class="form-control" readonly>
                   </div>
@@ -226,6 +244,8 @@
                 document.getElementById("confirmation_recipient_address").value = response["transaction"]["recipient_address"];
                 document.getElementById("confirmation_amount").value = response["transaction"]["value"];
                 document.getElementById("transaction_signature").value = response["signature"];
+                document.getElementById("Pincode").value = response["pin"];
+
 
                 $("#basicModal").modal('show');
                 
@@ -261,6 +281,7 @@
                 $("#sender_private_key").val("");
                 $("#recipient_address").val("");
                 $("#amount").val("");
+                $("Pincode").val("");
 
                 $("#basicModal").modal('hide');
                 $("#success_transaction_modal").modal('show');
